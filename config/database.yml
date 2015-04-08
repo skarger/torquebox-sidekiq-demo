@@ -9,16 +9,16 @@ default: &default
 
 development:
   <<: *default
-  database: sidekiq-cluster-test_development
+  database: sidekiq_cluster_test_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: sidekiq-cluster-test
+  username: sidekiq_cluster_test
 
   # The password associated with the postgres role (username).
-  #password:
+  password: <%= ENV['SIDEKIQ_CLUSTER_TEST_DATABASE_PASSWORD'] %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -40,7 +40,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: sidekiq-cluster-test_test
+  database: sidekiq_cluster_test_test
+  username: sidekiq_cluster_test
+  password: <%= ENV['SIDEKIQ_CLUSTER_TEST_DATABASE_PASSWORD'] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -63,6 +65,6 @@ test:
 #
 production:
   <<: *default
-  database: sidekiq-cluster-test_production
-  username: sidekiq-cluster-test
-  password: <%= ENV['SIDEKIQ-CLUSTER-TEST_DATABASE_PASSWORD'] %>
+  database: sidekiq_cluster_test_production
+  username: sidekiq_cluster_test
+  password: <%= ENV['SIDEKIQ_CLUSTER_TEST_DATABASE_PASSWORD'] %>

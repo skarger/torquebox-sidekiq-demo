@@ -1,0 +1,32 @@
+Install VirtualBox.
+Install Vagrant.
+
+
+Install postgres, create a user named postgres with create user privileges.
+
+skarger@Stephen-Kargers-iMac sidekiq-cluster-test (master) $ psql --user postgres
+Password for user postgres:
+psql (9.3.5, server 9.1.2)
+Type "help" for help.
+
+postgres=# create user sidekiq_cluster_test with createdb password 'secret';
+CREATE ROLE
+postgres=# \q
+
+$ export SIDEKIQ_CLUSTER_TEST_DATABASE_PASSWORD=secret
+
+$ ruby -v
+jruby 1.7.13 (1.9.3p392) 2014-06-24 43f133c on Java HotSpot(TM) 64-Bit Server VM 1.7.0_75-b13 [darwin-x86_64]
+
+$ bundle exec rake db:setup
+NOTE: ActiveRecord 4.2 is not (yet) fully supported by AR-JDBC, please help us finish 4.2 support - check http://bit.ly/jruby-42 for starters
+/Users/skarger/Programming/zipcar/sidekiq-cluster-test/db/schema.rb doesn't exist yet. Run `rake db:migrate` to create it, then try again. If you do not intend to use a database, you should instead alter /Users/skarger/Programming/zipcar/sidekiq-cluster-test/config/application.rb to limit the frameworks that will be loaded.
+$ bundle exec rake db:migrate
+NOTE: ActiveRecord 4.2 is not (yet) fully supported by AR-JDBC, please help us finish 4.2 support - check http://bit.ly/jruby-42 for starters
+
+
+Download torquebox distribution and put in repo root so it's visible in /vagrant when provisioning.
+wget http://torquebox.org/release/org/torquebox/torquebox-dist/3.1.2/torquebox-dist-3.1.2-bin.zip
+
+The vagrant provisioner will use this while creating the torquebox user.
+export TORQUEBOX_PASSWORD=<secret>

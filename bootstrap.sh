@@ -1,17 +1,27 @@
 #!/usr/bin/env bash
 
+# package dependencies
+# for unzipping torquebox distribution from /vagrant
+sudo yum -y install zip unzip
+# for torquebox and jruby
+sudo yum -y install java-1.7.0-openjdk-devel.x86_64
+# for capistrano
+sudo yum -y install git.x86_64
+
+# set up deploy user for capistrano
+# reference: http://capistranorb.com/documentation/getting-started/authentication-and-authorisation/
+sudo adduser deploy
+sudo passwd -l deploy
+
+# set up torquebox user and group
 torquebox_user_password=$1
-
 sudo groupadd torquebox
-
 sudo useradd -d /home/torquebox -m -g torquebox -s /bin/bash torquebox
 echo $torquebox_user_password | sudo passwd torquebox --stdin
 
+# install torquebox
 mkdir /opt/torquebox
 sudo chown torquebox:torquebox /opt/torquebox
-
-sudo yum -y install zip unzip
-
 sudo su torquebox
 unzip /vagrant/torquebox-dist-3.1.1-bin.zip -d /opt/torquebox/
 cd /opt/torquebox

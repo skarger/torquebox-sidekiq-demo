@@ -29,4 +29,11 @@ Download torquebox distribution and put in repo root so it's visible in /vagrant
 wget http://torquebox.org/release/org/torquebox/torquebox-dist/3.1.2/torquebox-dist-3.1.2-bin.zip
 
 The vagrant provisioner will use this while creating the torquebox user.
-export TORQUEBOX_PASSWORD=<secret>
+export TORQUEBOX_PASSWORD=secret
+
+The capistrano deploy user will need this to log in and to access the code repository.
+export DEPLOY_SSH_PUBLIC_KEY=public_key
+
+Option 1: Use your own public key, assuming it can access the git repo.
+Set up ssh agent to forward your session for the deploy user.
+See http://capistranorb.com/documentation/getting-started/authentication-and-authorisation/

@@ -66,6 +66,6 @@ Vagrant.configure(2) do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell" do |s|
     s.path = "bootstrap.sh"
-    s.args = "#{ENV['TORQUEBOX_PASSWORD']}"
+    s.args = "#{ENV['TORQUEBOX_PASSWORD']} #{ENV['DEPLOY_SSH_PUBLIC_KEY']}"
   end
 end

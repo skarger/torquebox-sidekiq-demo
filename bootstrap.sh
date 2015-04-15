@@ -42,6 +42,6 @@ export PATH=$JRUBY_HOME/bin:$PATH" > /etc/profile.d/torquebox.sh
 sudo su - torquebox <<EOF
 unzip /vagrant/torquebox-dist-3.1.1-bin.zip -d /opt/torquebox/
 cd /opt/torquebox
-ln -s torquebox-dist-3.1.1 current
+ln -s torquebox-3.1.1 current
 EOF
 

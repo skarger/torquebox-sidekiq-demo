@@ -37,3 +37,8 @@ export DEPLOY_SSH_PUBLIC_KEY=public_key
 Option 1: Use your own public key, assuming it can access the git repo.
 Set up ssh agent to forward your session for the deploy user.
 See http://capistranorb.com/documentation/getting-started/authentication-and-authorisation/
+
+This creates two hosts named web and background.
+Both potentially need to be able to use ssh to access a git repository.
+ssh-add -A deploy@web
+ssh-add -A deploy@background

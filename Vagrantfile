@@ -1,4 +1,5 @@
 # -*- mode: ruby -*-
+#
 # vi: set ft=ruby :
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
@@ -68,4 +69,13 @@ Vagrant.configure(2) do |config|
     s.path = "bootstrap.sh"
     s.args = "#{ENV['TORQUEBOX_PASSWORD']} #{ENV['DEPLOY_SSH_PUBLIC_KEY']}"
   end
+
+  config.vm.define "web" do |web|
+    web.vm.hostname = "web.localhost"
+  end
+
+  config.vm.define "background" do |background|
+    background.vm.hostname = "background.localhost"
+  end
+
 end

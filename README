@@ -42,3 +42,14 @@ This creates two hosts named web and background.
 Both potentially need to be able to use ssh to access a git repository.
 ssh-add -A deploy@web
 ssh-add -A deploy@background
+
+
+Assumptions:
+Hostnames given to Vagrant boxes:
+web.localhost - the Rails app is deployed here and runs and serves web traffic
+background.locahost - Sidekiq runs here
+database.localhost - Postgres and Redis both run here
+
+In particular, web and background depend on the database hostname
+in order to access the data stores.
+They depend on Postgres and Redis running on their default ports.

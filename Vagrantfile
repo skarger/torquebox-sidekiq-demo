@@ -65,17 +65,26 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell" do |s|
-    s.path = "bootstrap.sh"
-    s.args = "#{ENV['TORQUEBOX_PASSWORD']} #{ENV['DEPLOY_SSH_PUBLIC_KEY']}"
-  end
-
   config.vm.define "web" do |web|
     web.vm.hostname = "web.localhost"
+    web.vm.provision  "shell" do |s|
+      s.path = "provision_app_server.sh"
+      s.args = "#{ENV['TORQUEBOX_PASSWORD']} #{ENV['DEPLOY_SSH_PUBLIC_KEY']}"
+    end
   end
 
   config.vm.define "background" do |background|
     background.vm.hostname = "background.localhost"
+    background.vm.provision  "shell" do |s|
+      s.path = "provision_app_server.sh"
+      s.args = "#{ENV['TORQUEBOX_PASSWORD']} #{ENV['DEPLOY_SSH_PUBLIC_KEY']}"
+    end
   end
 
+  config.vm.define "database" do |datastore|
+    datastore.vm.hostname = "database.localhost"
+    datastore.vm.provision "shell" do |s|
+      s.path = "provision_database_server.sh"
+    end
+  end
 end

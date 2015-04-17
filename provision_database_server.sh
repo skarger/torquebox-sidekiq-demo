@@ -9,10 +9,10 @@ sudo service postgresql-9.4 start
 sudo chkconfig postgresql-9.4 on
 
 # install redis
-#sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-#sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
-#yum install -y redis
+sudo yum install -y http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+sudo yum install -y http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+sudo yum install -y redis
 # configure to start on boot
-#service redis start
-#chkconfig redis on
+sudo service redis start
+sudo chkconfig redis on
 

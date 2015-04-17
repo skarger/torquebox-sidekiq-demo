@@ -25,6 +25,15 @@ chmod 700 .ssh
 chmod 600 .ssh/authorized_keys
 EOF
 
+# where the deploy user will put the application code
+deploy_to=/deployments
+sudo mkdir -p ${deploy_to}
+sudo chown deploy:deploy ${deploy_to}
+umask 0002
+sudo chmod g+s ${deploy_to}
+sudo mkdir ${deploy_to}/{releases,shared}
+chown deploy ${deploy_to}/{releases,shared}
+
 # set up torquebox user and group
 sudo groupadd torquebox
 sudo useradd -d /home/torquebox -m -g torquebox -s /bin/bash torquebox

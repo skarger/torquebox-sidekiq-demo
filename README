@@ -1,5 +1,6 @@
 Install VirtualBox.
 Install Vagrant.
+vagrant plugin install vagrant-hostmanager
 
 
 Install postgres, create a user named postgres with create user privileges.

@@ -32,7 +32,7 @@ sudo chown deploy:deploy ${deploy_to}
 umask 0002
 sudo chmod g+s ${deploy_to}
 sudo mkdir ${deploy_to}/{releases,shared}
-chown deploy ${deploy_to}/{releases,shared}
+sudo chown deploy ${deploy_to}/{releases,shared}
 
 # set up torquebox user and group
 sudo groupadd torquebox

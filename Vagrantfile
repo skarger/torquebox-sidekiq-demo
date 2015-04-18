@@ -15,6 +15,10 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "chef/centos-6.5"
 
+  # Vagrant Host Manager plugin configuration
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -69,7 +73,7 @@ Vagrant.configure(2) do |config|
     web.vm.hostname = "web.localhost"
     web.vm.provision  "shell" do |s|
       s.path = "provision_app_server.sh"
-      s.args = "#{ENV['TORQUEBOX_PASSWORD']} #{ENV['DEPLOY_SSH_PUBLIC_KEY']}"
+      s.args = "\"#{ENV['TORQUEBOX_PASSWORD']}\" \"#{ENV['DEPLOY_SSH_PUBLIC_KEY']}\""
     end
   end
 
@@ -77,7 +81,7 @@ Vagrant.configure(2) do |config|
     background.vm.hostname = "background.localhost"
     background.vm.provision  "shell" do |s|
       s.path = "provision_app_server.sh"
-      s.args = "#{ENV['TORQUEBOX_PASSWORD']} #{ENV['DEPLOY_SSH_PUBLIC_KEY']}"
+      s.args = "\"#{ENV['TORQUEBOX_PASSWORD']}\" \"#{ENV['DEPLOY_SSH_PUBLIC_KEY']}\""
     end
   end
 

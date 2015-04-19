@@ -13,7 +13,6 @@ sudo chkconfig postgresql-9.4 on
 
 # create database user
 sudo adduser my_app_name
-sudo passwd -l my_app_name
 echo $database_user_password | sudo passwd my_app_name --stdin
 
 sudo su - postgres <<EOF

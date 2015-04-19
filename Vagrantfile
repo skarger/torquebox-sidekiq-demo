@@ -89,6 +89,7 @@ Vagrant.configure(2) do |config|
     datastore.vm.hostname = "database.localhost"
     datastore.vm.provision "shell" do |s|
       s.path = "provision_database_server.sh"
+      s.args = "\"#{ENV['DATABASE_USER_PASSWORD']}\""
     end
   end
 end

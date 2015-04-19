@@ -44,6 +44,7 @@ Both potentially need to be able to use ssh to access a git repository.
 ssh-add -A deploy@web
 ssh-add -A deploy@background
 
+export DATABASE_USER_PASSWORD=secret
 
 Assumptions:
 Hostnames given to Vagrant boxes:

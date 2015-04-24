@@ -87,6 +87,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "database" do |datastore|
     datastore.vm.hostname = "database.localhost"
+    datastore.vm.network "forwarded_port", guest: 5432, host: 15432
     datastore.vm.provision "shell" do |s|
       s.path = "provision_database_server.sh"
       s.args = "\"#{ENV['DATABASE_USER_PASSWORD']}\""

@@ -46,6 +46,8 @@ ssh-add -A deploy@background
 
 export DATABASE_USER_PASSWORD=secret
 
+export SECRET_KEY_BASE=`bundle exec rake secret`
+
 Assumptions:
 Hostnames given to Vagrant boxes:
 web.localhost - the Rails app is deployed here and runs and serves web traffic
